@@ -5,11 +5,13 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/labstack/echo/v4"
 	"url-shortener/database"
+
+	"github.com/labstack/echo/v4"
 )
 
 func Health(ctx echo.Context) error {
+
 	_, err := database.PingDB()
 	if err != nil {
 		log.Panic(err.Error())
