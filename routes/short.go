@@ -2,15 +2,16 @@ package routes
 
 import (
 	"database/sql"
+	"fmt"
+	"github.com/labstack/echo/v4"
 	"log"
 	"net/http"
-
-	"github.com/labstack/echo/v4"
 	"url-shortener/database"
 )
 
 func Short(ctx echo.Context) error {
 	short := ctx.Param("short")
+	fmt.Printf("Input short: %s\n", short)
 	db := database.Connect()
 
 	rows, err := db.Query("SELECT * FROM links")
@@ -40,21 +41,24 @@ func Short(ctx echo.Context) error {
 		return nil
 	}
 
+	var link string
+	found := false
 	for _, bk := range bks {
-		for {
-			if bk.short == short {
-				err := ctx.Redirect(http.StatusPermanentRedirect, bk.link)
-				if err != nil {
-					return err
-				}
-				break
-			} else {
-				err := ctx.String(http.StatusOK, "The short is not valid")
-				if err != nil {
-					return err
-				}
-				break
-			}
+		if bk.short == short {
+			link = bk.link
+			found = true
+			break
+		}
+	}
+	if found {
+		err := ctx.Redirect(http.StatusPermanentRedirect, link)
+		if err != nil {
+			return err
+		}
+	} else {
+		err := ctx.String(404, "Short not found")
+		if err != nil {
+			return err
 		}
 	}
 	return nil

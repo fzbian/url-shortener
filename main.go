@@ -10,9 +10,9 @@ import (
 func main() {
 	e := echo.New()
 	e.Static("/", "views")
+	e.GET("/generate/:short", routes.Short)
 	api := e.Group("/api")
 	api.GET("/", routes.Health)
 	api.POST("/addlink/", routes.AddLink)
-	api.GET("/short/:short", routes.Short)
 	e.Logger.Fatal(e.Start(":8080"))
 }
