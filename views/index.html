@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function submitForm() {
+            var link = document.getElementById("link").value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost:8080/api/addlink/?link=" + link, true);
+            xhr.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    var response = JSON.parse(this.responseText);
+                    document.getElementById("shortLink").innerHTML =
+                        "Link acortado: " + response.short_link;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+<form>
+    <input type="text" id="link" placeholder="Ingresa tu URL aquí">
+    <button type="button" onclick="submitForm()">Acortar URL</button>
+</form>
+<div id="shortLink"></div>
+</body>
+</html>
