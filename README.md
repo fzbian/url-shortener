@@ -12,7 +12,7 @@ a simple url shortener created with go, mysql and html
 #### Create link
 
 ```http
-  GET /addlink/?link=${url}
+  GET /addlink/?link=<url>
 ```
 
 | Parameter | Type     | Description                |
@@ -22,7 +22,7 @@ a simple url shortener created with go, mysql and html
 #### Redirect
 
 ```http
-  GET /${short}
+  GET /<short>
 ```
 
 | Parameter | Type     | Description                       |
