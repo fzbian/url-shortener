@@ -1,7 +1,11 @@
 
 # URL Shortener
 
-a simple url shortener for api usage
+a simple url shortener created with go, mysql and html
+
+## Screenshots
+
+![](docs/preview.gif)
 
 ## API Reference
 
@@ -18,14 +22,12 @@ a simple url shortener for api usage
 #### Redirect
 
 ```http
-  GET /short/${short}
+  GET /${short}
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `short`      | `string` | the hash generated to redirect |
-
-
 
 ## Technologies
 
