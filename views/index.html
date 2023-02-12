@@ -16,6 +16,59 @@
             xhr.send();
         }
     </script>
+    <style>
+        * {
+            font-family: "Helvetica Neue", sans-serif;
+            color: white;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            height: 40px;
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-bottom: 2px solid white;
+        }
+
+        button[type="button"] {
+            width: 80%;
+            height: 40px;
+            background-color: purple;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+
+        #shortLink {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 <form>
@@ -23,5 +76,6 @@
     <button type="button" onclick="submitForm()">Acortar URL</button>
 </form>
 <div id="shortLink"></div>
+<footer>Hecho por fzbian</footer>
 </body>
 </html>

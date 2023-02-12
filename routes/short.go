@@ -11,6 +11,9 @@ import (
 
 func Short(ctx echo.Context) error {
 	short := ctx.Param("short")
+	if short == "favicon.ico" {
+		return nil
+	}
 	fmt.Printf("Input short: %s\n", short)
 	db := database.Connect()
 
