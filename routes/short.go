@@ -2,7 +2,6 @@ package routes
 
 import (
 	"database/sql"
-	"fmt"
 	"github.com/labstack/echo/v4"
 	"log"
 	"net/http"
@@ -14,7 +13,6 @@ func Short(ctx echo.Context) error {
 	if short == "favicon.ico" {
 		return nil
 	}
-	fmt.Printf("Input short: %s\n", short)
 	db := database.Connect()
 
 	rows, err := db.Query("SELECT * FROM links")

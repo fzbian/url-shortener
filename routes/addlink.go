@@ -35,12 +35,15 @@ func AddLink(ctx echo.Context) error {
 
 		result := fmt.Sprintf("%s successfully created with the short %s\n", link, short)
 		fmt.Println(result)
+		res := fmt.Sprintf("Link shortened: %s", short)
 		return ctx.JSON(http.StatusOK, echo.Map{
-			"short_link": short,
-			"url":        link,
+			"response": res,
 		})
 	} else {
-		return ctx.String(http.StatusBadRequest, "URL Invalid")
+		res := fmt.Sprintf("The link is invalid")
+		return ctx.JSON(http.StatusOK, echo.Map{
+			"response": res,
+		})
 	}
 	return nil
 }
