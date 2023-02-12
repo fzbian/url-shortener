@@ -57,7 +57,7 @@ func Short(ctx echo.Context) error {
 			return err
 		}
 	} else {
-		err := ctx.String(404, "Short not found")
+		err := ctx.File("views/404.html")
 		if err != nil {
 			return err
 		}
