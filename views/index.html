@@ -10,7 +10,7 @@
                 if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
                     var response = JSON.parse(this.responseText);
                     document.getElementById("shortLink").innerHTML =
-                        "Link acortado: " + response.short_link;
+                        response.response;
                 }
             };
             xhr.send();
@@ -58,6 +58,7 @@
         #shortLink {
             margin-top: 20px;
             font-size: 16px;
+            text-align: center;
         }
 
         footer {
